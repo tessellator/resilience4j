@@ -140,6 +140,7 @@ public class CircuitBreakerMetrics implements MetricSet {
      * Creates a new instance CircuitBreakerMetrics {@link CircuitBreakerMetrics} with an {@link
      * Iterable} of circuit breakers as a source.
      *
+     * @param prefix          the prefix of metrics names
      * @param circuitBreakers the circuit breakers
      */
     public static CircuitBreakerMetrics ofIterable(String prefix,
@@ -147,6 +148,30 @@ public class CircuitBreakerMetrics implements MetricSet {
         return new CircuitBreakerMetrics(prefix, circuitBreakers, new MetricRegistry());
     }
 
+    /**
+     * Creates a new instance CircuitBreakerMetrics {@link CircuitBreakerMetrics} with an {@link
+     * Iterable} of circuit breakers as a source.
+     *
+     * @param circuitBreakers the circuit breakers
+     * @param metricRegistry  the metric registry
+     */
+    public static CircuitBreakerMetrics ofIterable(Iterable<CircuitBreaker> circuitBreakers,
+        MetricRegistry metricRegistry) {
+        return new CircuitBreakerMetrics(DEFAULT_PREFIX, circuitBreakers, metricRegistry);
+    }
+
+    /**
+     * Creates a new instance CircuitBreakerMetrics {@link CircuitBreakerMetrics} with an {@link
+     * Iterable} of circuit breakers as a source.
+     *
+     * @param prefix          the prefix of metrics names
+     * @param circuitBreakers the circuit breakers
+     * @param metricRegistry  the metric registry
+     */
+    public static CircuitBreakerMetrics ofIterable(String prefix,
+        Iterable<CircuitBreaker> circuitBreakers, MetricRegistry metricRegistry) {
+        return new CircuitBreakerMetrics(prefix, circuitBreakers, metricRegistry);
+    }
 
     /**
      * Creates a new instance of CircuitBreakerMetrics {@link CircuitBreakerMetrics} with a circuit
@@ -156,6 +181,43 @@ public class CircuitBreakerMetrics implements MetricSet {
      */
     public static CircuitBreakerMetrics ofCircuitBreaker(CircuitBreaker circuitBreaker) {
         return new CircuitBreakerMetrics(Array.of(circuitBreaker));
+    }
+
+    /**
+     * Creates a new instance of CircuitBreakerMetrics {@link CircuitBreakerMetrics} with a circuit
+     * breaker as a source.
+     *
+     * @param prefix         the prefix of metrics names
+     * @param circuitBreaker the circuit breaker
+     */
+    public static CircuitBreakerMetrics ofCircuitBreaker(String prefix,
+        CircuitBreaker circuitBreaker) {
+        return new CircuitBreakerMetrics(prefix, Array.of(circuitBreaker), new MetricRegistry());
+    }
+
+    /**
+     * Creates a new instance of CircuitBreakerMetrics {@link CircuitBreakerMetrics} with a circuit
+     * breaker as a source.
+     *
+     * @param circuitBreaker the circuit breaker
+     * @param metricRegistry the metric registry
+     */
+    public static CircuitBreakerMetrics ofCircuitBreaker(CircuitBreaker circuitBreaker,
+        MetricRegistry metricRegistry) {
+        return new CircuitBreakerMetrics(DEFAULT_PREFIX, Array.of(circuitBreaker), metricRegistry);
+    }
+
+    /**
+     * Creates a new instance of CircuitBreakerMetrics {@link CircuitBreakerMetrics} with a circuit
+     * breaker as a source.
+     *
+     * @param prefix         the prefix of metrics names
+     * @param circuitBreaker the circuit breaker
+     * @param metricRegistry the metric registry
+     */
+    public static CircuitBreakerMetrics ofCircuitBreaker(String prefix,
+        CircuitBreaker circuitBreaker, MetricRegistry metricRegistry) {
+        return new CircuitBreakerMetrics(prefix, Array.of(circuitBreaker), metricRegistry);
     }
 
     @Override
