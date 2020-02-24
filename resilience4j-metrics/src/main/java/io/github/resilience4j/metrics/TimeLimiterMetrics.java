@@ -126,10 +126,36 @@ public class TimeLimiterMetrics implements MetricSet {
      * Creates a new instance {@link TimeLimiterMetrics} with an {@link Iterable} of time limiters
      * as a source.
      *
+     * @param prefix       the prefix of metrics names
      * @param timeLimiters the time limiters
      */
     public static TimeLimiterMetrics ofIterable(String prefix, Iterable<TimeLimiter> timeLimiters) {
         return new TimeLimiterMetrics(prefix, timeLimiters, new MetricRegistry());
+    }
+
+    /**
+     * Creates a new instance {@link TimeLimiterMetrics} with an {@link Iterable} of time limiters
+     * as a source.
+     *
+     * @param timeLimiters   the time limiters
+     * @param metricRegistry the metric registry
+     */
+    public static TimeLimiterMetrics ofIterable(Iterable<TimeLimiter> timeLimiters,
+        MetricRegistry metricRegistry) {
+        return new TimeLimiterMetrics(DEFAULT_PREFIX, timeLimiters, metricRegistry);
+    }
+
+    /**
+     * Creates a new instance {@link TimeLimiterMetrics} with an {@link Iterable} of time limiters
+     * as a source.
+     *
+     * @param prefix         the prefix of metrics names
+     * @param timeLimiters   the time limiters
+     * @param metricRegistry the metric registry
+     */
+    public static TimeLimiterMetrics ofIterable(String prefix, Iterable<TimeLimiter> timeLimiters,
+        MetricRegistry metricRegistry) {
+        return new TimeLimiterMetrics(prefix, timeLimiters, metricRegistry);
     }
 
 
@@ -140,6 +166,39 @@ public class TimeLimiterMetrics implements MetricSet {
      */
     public static TimeLimiterMetrics ofTimeLimiter(TimeLimiter timeLimiter) {
         return new TimeLimiterMetrics(Array.of(timeLimiter));
+    }
+
+    /**
+     * Creates a new instance of {@link TimeLimiterMetrics} with a time limiter as a source.
+     *
+     * @param prefix      the prefix of metrics names
+     * @param timeLimiter the time limiter
+     */
+    public static TimeLimiterMetrics ofTimeLimiter(String prefix, TimeLimiter timeLimiter) {
+        return new TimeLimiterMetrics(prefix, Array.of(timeLimiter), new MetricRegistry());
+    }
+
+    /**
+     * Creates a new instance of {@link TimeLimiterMetrics} with a time limiter as a source.
+     *
+     * @param timeLimiter    the time limiter
+     * @param metricRegistry the metric registry
+     */
+    public static TimeLimiterMetrics ofTimeLimiter(TimeLimiter timeLimiter,
+        MetricRegistry metricRegistry) {
+        return new TimeLimiterMetrics(DEFAULT_PREFIX, Array.of(timeLimiter), metricRegistry);
+    }
+
+    /**
+     * Creates a new instance of {@link TimeLimiterMetrics} with a time limiter as a source.
+     *
+     * @param prefix         the prefix of metrics names
+     * @param timeLimiter    the time limiter
+     * @param metricRegistry the metric registry
+     */
+    public static TimeLimiterMetrics ofTimeLimiter(String prefix, TimeLimiter timeLimiter,
+        MetricRegistry metricRegistry) {
+        return new TimeLimiterMetrics(prefix, Array.of(timeLimiter), metricRegistry);
     }
 
     @Override
