@@ -63,16 +63,37 @@ public class RetryMetrics implements MetricSet {
         return new RetryMetrics(retryRegistry.getAllRetries());
     }
 
-    public static RetryMetrics ofIterable(String prefix, Iterable<Retry> retries) {
-        return new RetryMetrics(prefix, retries, new MetricRegistry());
-    }
-
     public static RetryMetrics ofIterable(Iterable<Retry> retries) {
         return new RetryMetrics(retries);
     }
 
+    public static RetryMetrics ofIterable(String prefix, Iterable<Retry> retries) {
+        return new RetryMetrics(prefix, retries, new MetricRegistry());
+    }
+
+    public static RetryMetrics ofIterable(Iterable<Retry> retries, MetricRegistry metricRegistry) {
+        return new RetryMetrics(DEFAULT_PREFIX, retries, metricRegistry);
+    }
+
+    public static RetryMetrics ofIterable(String prefix, Iterable<Retry> retries,
+        MetricRegistry metricRegistry) {
+        return new RetryMetrics(prefix, retries, metricRegistry);
+    }
+
     public static RetryMetrics ofRetry(Retry retry) {
         return new RetryMetrics(Array.of(retry));
+    }
+
+    public static RetryMetrics ofRetry(String prefix, Retry retry) {
+        return new RetryMetrics(prefix, Array.of(retry), new MetricRegistry());
+    }
+
+    public static RetryMetrics ofRetry(Retry retry, MetricRegistry metricRegistry) {
+        return new RetryMetrics(DEFAULT_PREFIX, Array.of(retry), metricRegistry);
+    }
+
+    public static RetryMetrics ofRetry(String prefix, Retry retry, MetricRegistry metricRegistry) {
+        return new RetryMetrics(prefix, Array.of(retry), metricRegistry);
     }
 
     @Override
