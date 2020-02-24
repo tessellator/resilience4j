@@ -119,10 +119,35 @@ public class BulkheadMetrics implements MetricSet {
      * Creates a new instance BulkheadMetrics {@link BulkheadMetrics} with an {@link Iterable} of
      * bulkheads as a source.
      *
+     * @param prefix    the prefix of metrics names
      * @param bulkheads the bulkheads
      */
     public static BulkheadMetrics ofIterable(String prefix, Iterable<Bulkhead> bulkheads) {
         return new BulkheadMetrics(prefix, bulkheads, new MetricRegistry());
+    }
+
+    /**
+     * Creates a new instance BulkheadMetrics {@link BulkheadMetrics} with an {@link Iterable} of
+     * bulkheads as a source.
+     *
+     * @param bulkheads      the bulkheads
+     * @param metricRegistry the metric registry
+     */
+    public static BulkheadMetrics ofIterable(Iterable<Bulkhead> bulkheads, MetricRegistry metricRegistry) {
+        return new BulkheadMetrics(DEFAULT_PREFIX, bulkheads, metricRegistry);
+    }
+
+    /**
+     * Creates a new instance BulkheadMetrics {@link BulkheadMetrics} with an {@link Iterable} of
+     * bulkheads as a source.
+     *
+     * @param prefix         the prefix of metrics names
+     * @param bulkheads      the bulkheads
+     * @param metricRegistry the metric registry
+     */
+    public static BulkheadMetrics ofIterable(String prefix,
+        Iterable<Bulkhead> bulkheads, MetricRegistry metricRegistry) {
+        return new BulkheadMetrics(prefix, bulkheads, metricRegistry);
     }
 
 
@@ -134,6 +159,41 @@ public class BulkheadMetrics implements MetricSet {
      */
     public static BulkheadMetrics ofBulkhead(Bulkhead bulkhead) {
         return new BulkheadMetrics(Array.of(bulkhead));
+    }
+
+    /**
+     * Creates a new instance of BulkheadMetrics {@link BulkheadMetrics} with a bulkhead as a
+     * source.
+     *
+     * @param prefix   the prefix of metrics names
+     * @param bulkhead the circuit breaker
+     */
+    public static BulkheadMetrics ofBulkhead(String prefix, Bulkhead bulkhead) {
+        return new BulkheadMetrics(prefix, Array.of(bulkhead), new MetricRegistry());
+    }
+
+    /**
+     * Creates a new instance of BulkheadMetrics {@link BulkheadMetrics} with a bulkhead as a
+     * source.
+     *
+     * @param bulkhead       the circuit breaker
+     * @param metricRegistry the metric registry
+     */
+    public static BulkheadMetrics ofBulkhead(Bulkhead bulkhead, MetricRegistry metricRegistry) {
+        return new BulkheadMetrics(DEFAULT_PREFIX, Array.of(bulkhead), metricRegistry);
+    }
+
+    /**
+     * Creates a new instance of BulkheadMetrics {@link BulkheadMetrics} with a bulkhead as a
+     * source.
+     *
+     * @param prefix         the prefix of metrics names
+     * @param bulkhead       the circuit breaker
+     * @param metricRegistry the metric registry
+     */
+    public static BulkheadMetrics ofBulkhead(String prefix, Bulkhead bulkhead,
+        MetricRegistry metricRegistry) {
+        return new BulkheadMetrics(prefix, Array.of(bulkhead), metricRegistry);
     }
 
     @Override
