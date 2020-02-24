@@ -122,6 +122,7 @@ public class ThreadPoolBulkheadMetrics implements MetricSet {
      * Creates a new instance BulkheadMetrics {@link ThreadPoolBulkheadMetrics} with an {@link
      * Iterable} of bulkheads as a source.
      *
+     * @param prefix    the prefix of metrics names
      * @param bulkheads the bulkheads
      */
     public static ThreadPoolBulkheadMetrics ofIterable(String prefix,
@@ -129,15 +130,77 @@ public class ThreadPoolBulkheadMetrics implements MetricSet {
         return new ThreadPoolBulkheadMetrics(prefix, bulkheads, new MetricRegistry());
     }
 
+    /**
+     * Creates a new instance BulkheadMetrics {@link ThreadPoolBulkheadMetrics} with an {@link
+     * Iterable} of bulkheads as a source.
+     *
+     * @param bulkheads      the bulkheads
+     * @param metricRegistry the metric registry
+     */
+    public static ThreadPoolBulkheadMetrics ofIterable(
+        Iterable<ThreadPoolBulkhead> bulkheads, MetricRegistry metricRegistry) {
+        return new ThreadPoolBulkheadMetrics(DEFAULT_PREFIX, bulkheads, metricRegistry);
+    }
+
+    /**
+     * Creates a new instance BulkheadMetrics {@link ThreadPoolBulkheadMetrics} with an {@link
+     * Iterable} of bulkheads as a source.
+     *
+     * @param prefix         the prefix of metrics names
+     * @param bulkheads      the bulkheads
+     * @param metricRegistry the metric registry
+     */
+    public static ThreadPoolBulkheadMetrics ofIterable(String prefix,
+        Iterable<ThreadPoolBulkhead> bulkheads, MetricRegistry metricRegistry) {
+        return new ThreadPoolBulkheadMetrics(prefix, bulkheads, metricRegistry);
+    }
+
 
     /**
      * Creates a new instance of BulkheadMetrics {@link ThreadPoolBulkheadMetrics} with a bulkhead
      * as a source.
      *
-     * @param bulkhead the circuit breaker
+     * @param bulkhead the bulkhead
      */
     public static ThreadPoolBulkheadMetrics ofBulkhead(ThreadPoolBulkhead bulkhead) {
         return new ThreadPoolBulkheadMetrics(Array.of(bulkhead));
+    }
+
+    /**
+     * Creates a new instance of BulkheadMetrics {@link ThreadPoolBulkheadMetrics} with a bulkhead
+     * as a source.
+     *
+     * @param prefix   the prefix of metrics names
+     * @param bulkhead the bulkhead
+     */
+    public static ThreadPoolBulkheadMetrics ofBulkhead(String prefix,
+        ThreadPoolBulkhead bulkhead) {
+        return new ThreadPoolBulkheadMetrics(prefix, Array.of(bulkhead), new MetricRegistry());
+    }
+
+    /**
+     * Creates a new instance of BulkheadMetrics {@link ThreadPoolBulkheadMetrics} with a bulkhead
+     * as a source.
+     *
+     * @param bulkhead       the bulkhead
+     * @param metricRegistry the metric registry
+     */
+    public static ThreadPoolBulkheadMetrics ofBulkhead(ThreadPoolBulkhead bulkhead,
+        MetricRegistry metricRegistry) {
+        return new ThreadPoolBulkheadMetrics(DEFAULT_PREFIX, Array.of(bulkhead), metricRegistry);
+    }
+
+    /**
+     * Creates a new instance of BulkheadMetrics {@link ThreadPoolBulkheadMetrics} with a bulkhead
+     * as a source.
+     *
+     * @param prefix         the prefix of metrics names
+     * @param bulkhead       the bulkhead
+     * @param metricRegistry the metric registry
+     */
+    public static ThreadPoolBulkheadMetrics ofBulkhead(String prefix,
+        ThreadPoolBulkhead bulkhead, MetricRegistry metricRegistry) {
+        return new ThreadPoolBulkheadMetrics(prefix, Array.of(bulkhead), metricRegistry);
     }
 
     @Override
