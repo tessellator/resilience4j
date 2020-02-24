@@ -127,10 +127,36 @@ public class RateLimiterMetrics implements MetricSet {
      * Creates a new instance {@link RateLimiterMetrics} with an {@link Iterable} of rate limiters
      * as a source.
      *
+     * @param prefix       the prefix of metrics names
      * @param rateLimiters the rate limiters
      */
     public static RateLimiterMetrics ofIterable(String prefix, Iterable<RateLimiter> rateLimiters) {
         return new RateLimiterMetrics(prefix, rateLimiters, new MetricRegistry());
+    }
+
+    /**
+     * Creates a new instance {@link RateLimiterMetrics} with an {@link Iterable} of rate limiters
+     * as a source.
+     *
+     * @param rateLimiters   the rate limiters
+     * @param metricRegistry the metric registry
+     */
+    public static RateLimiterMetrics ofIterable(Iterable<RateLimiter> rateLimiters,
+        MetricRegistry metricRegistry) {
+        return new RateLimiterMetrics(DEFAULT_PREFIX, rateLimiters, metricRegistry);
+    }
+
+    /**
+     * Creates a new instance {@link RateLimiterMetrics} with an {@link Iterable} of rate limiters
+     * as a source.
+     *
+     * @param prefix         the prefix of metrics names
+     * @param rateLimiters   the rate limiters
+     * @param metricRegistry the metric registry
+     */
+    public static RateLimiterMetrics ofIterable(String prefix, Iterable<RateLimiter> rateLimiters,
+        MetricRegistry metricRegistry) {
+        return new RateLimiterMetrics(prefix, rateLimiters, metricRegistry);
     }
 
 
@@ -141,6 +167,39 @@ public class RateLimiterMetrics implements MetricSet {
      */
     public static RateLimiterMetrics ofRateLimiter(RateLimiter rateLimiter) {
         return new RateLimiterMetrics(Array.of(rateLimiter));
+    }
+
+    /**
+     * Creates a new instance of {@link RateLimiterMetrics} with a rate limiter as a source.
+     *
+     * @param prefix      the prefix of metrics names
+     * @param rateLimiter the rate limiter
+     */
+    public static RateLimiterMetrics ofRateLimiter(String prefix, RateLimiter rateLimiter) {
+        return new RateLimiterMetrics(prefix, Array.of(rateLimiter), new MetricRegistry());
+    }
+
+    /**
+     * Creates a new instance of {@link RateLimiterMetrics} with a rate limiter as a source.
+     *
+     * @param rateLimiter    the rate limiter
+     * @param metricRegistry the metric registry
+     */
+    public static RateLimiterMetrics ofRateLimiter(RateLimiter rateLimiter,
+        MetricRegistry metricRegistry) {
+        return new RateLimiterMetrics(DEFAULT_PREFIX, Array.of(rateLimiter), metricRegistry);
+    }
+
+    /**
+     * Creates a new instance of {@link RateLimiterMetrics} with a rate limiter as a source.
+     *
+     * @param prefix         the prefix of metrics names
+     * @param rateLimiter    the rate limiter
+     * @param metricRegistry the metric registry
+     */
+    public static RateLimiterMetrics ofRateLimiter(String prefix, RateLimiter rateLimiter,
+        MetricRegistry metricRegistry) {
+        return new RateLimiterMetrics(prefix, Array.of(rateLimiter), metricRegistry);
     }
 
     @Override
